@@ -16,7 +16,7 @@ namespace TwitterKataOI
             var tweet = new Tweet(message);
             var user = new User(username);
 
-            return new PostTokens(tweet, user);
+            return new PostTokens(new Post(user, tweet));
         }
     }
 }

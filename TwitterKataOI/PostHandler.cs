@@ -3,15 +3,18 @@
     public class PostHandler
     {
         private readonly PostRepository _postRepository;
+        private readonly UserRepository _userRepository;
 
-        public PostHandler()
+        public PostHandler(PostRepository postRepository, UserRepository userRepository)
         {
-            _postRepository = new PostRepository();
+            _postRepository = postRepository;
+            _userRepository = userRepository;
         }
 
-        public void AddPost(Post post)
+        public virtual void Post(PostTokens postTokens)
         {
-            _postRepository.Add(post);
+            _postRepository.Add(postTokens.GetPost());
+            _userRepository.Add(postTokens.GetPost().Author);
         }
     }
 }

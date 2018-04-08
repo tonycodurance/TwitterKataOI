@@ -2,19 +2,20 @@
 {
     public class Twitterminal
     {
-        private readonly CommandGenerator _commandGenerator;
-        private readonly CommandExecutor _commandExecutor;
+        private readonly PostHandler _postHandler;
+        private readonly Tokenizer _tokenizer;
 
-        public Twitterminal(CommandGenerator commandGenerator, CommandExecutor commandExecutor)
+        public Twitterminal(Tokenizer tokenizer, PostHandler postHandler)
         {
-            _commandGenerator = commandGenerator;
-            _commandExecutor = commandExecutor;
+            _postHandler = postHandler;
+            _tokenizer = tokenizer;
         }
 
         public virtual void Execute(string input)
         {
-            var command = _commandGenerator.GenerateCommand(input);
-            _commandExecutor.Execute(command);
+            var tokens = _tokenizer.Tokenize(input);
+            
+            _postHandler.Post(tokens);
         }
     }
 }

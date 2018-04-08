@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 
 namespace TwitterKataOI
@@ -9,7 +9,8 @@ namespace TwitterKataOI
 
         public PostRepository()
         {
-            _posts = new List<Post>();
+            if (_posts == null)
+                _posts = new List<Post>();
         }
 
         public virtual void Add(Post post)

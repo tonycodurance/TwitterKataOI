@@ -12,7 +12,7 @@
         public virtual ITwitterCommand GenerateCommand(string input)
         {            
             var postTokens = _tokenizer.Tokenize(input);
-            var post = new Post(postTokens.GetUser(), postTokens.GetTweet());
+            var post = new Post(postTokens.GetPost().Author, postTokens.GetPost().Tweet);
 
             return new PostCommand(post);
         }

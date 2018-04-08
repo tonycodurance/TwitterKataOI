@@ -2,32 +2,25 @@
 {
     public class PostTokens
     {
-        private readonly Tweet _tweet;
-        private readonly User _user;
+        private readonly Post _post;
 
-        public PostTokens(Tweet tweet, User user)
+        public PostTokens(Post post)
         {
-            _tweet = tweet;
-            _user = user;
+            _post = post;
         }
-
-        public User GetUser()
+        
+        public virtual Post GetPost()
         {
-            return _user;
-        }
-
-        public Tweet GetTweet()
-        {
-            return _tweet;
+            return _post;
         }
 
         public override bool Equals(object obj)
         {
             if (!(obj is PostTokens postTokens))
                 return false;
-            
-            return _tweet.Message == postTokens.GetTweet().Message &&
-                   _user.Username == postTokens.GetUser().Username;
+
+            return _post.Tweet.Message == postTokens.GetPost().Tweet.Message
+                   && _post.Author.Username == postTokens.GetPost().Author.Username;
         }
     }
 }

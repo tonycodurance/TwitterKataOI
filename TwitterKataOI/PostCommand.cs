@@ -9,13 +9,11 @@
         public PostCommand(Post post)
         {
             _post = post;
-            _postHandler = new PostHandler();
-            _userHandler = new UserHandler();
         }
 
         public void Execute()
         {
-            _postHandler.AddPost(_post);
+//            _postHandler.Post(_post.Tweet);
             _userHandler.AddUser(_post.Author);
         }
     }

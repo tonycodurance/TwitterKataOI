@@ -12,7 +12,7 @@ namespace TwitterKataOITests
             const string input = "Bob -> Hello world!";
             var tweet = new Tweet("Hello world!");
             var user = new User("Bob");
-            var expectedTokens = new PostTokens(tweet, user);
+            var expectedTokens = new PostTokens(new Post(user, tweet));
 
             var tokens = new Tokenizer().Tokenize(input);
             
